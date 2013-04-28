@@ -1,0 +1,21 @@
+[submodule "bundle/vim-pathogen"]
+  path = bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "bundle/vim-powerline"]
+	path = bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/grep_vim"]
+	path = bundle/grep_vim
+	url = https://github.com/vim-scripts/grep.vim.git
+[submodule "bundle/vcscommand"]
+	path = bundle/vcscommand
+	url = https://github.com/vim-scripts/vcscommand.vim.git

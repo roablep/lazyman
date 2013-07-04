@@ -1,7 +1,12 @@
-#This is Analytics
-alias ls='ls -G'
-alias ll='ls -hl'
-alias lp='ls -FC --color=auto'
+
+alias glp='git log --pretty=format:"%h %an %ar -%s"' # short git logs
+alias l.='ls -d .* --color=auto' # show hidden only
+alias ll='ls -hl' # human readable & long
+alias lp='ls -FC --color=auto' # classify & color
+alias ls='ls --color=auto'
+
+
+
 function cs () {
 cd "$@" && lp
 }

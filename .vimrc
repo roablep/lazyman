@@ -41,11 +41,6 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.conf set ft=javascript
 autocmd BufNewFile,BufRead *.config set ft=javascript
 
-au! BufRead,BufNewFile *.json setfiletype json 
-au! BufRead,BufNewFile *.conf setfiletype json 
-au! BufRead,BufNewFile *.config setfiletype json 
-au! BufRead,BufNewFile *.scala setfiletype scala
-
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.conf set shiftwidth=2

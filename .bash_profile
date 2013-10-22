@@ -1,4 +1,3 @@
-
 alias glp='git log --pretty=format:"%h %an %ar -%s"' # short git logs
 alias l.='ls -d .* --color=auto' # show hidden only
 alias ll='ls -hl' # human readable & long
@@ -61,37 +60,6 @@ function get_nz_tables() {
     python2.7 ~/scripts/python_nz_lookup.py $@ > nz_lookup.tmp
     nzsql -u u_USER -pw  -host vip1.npsc.nym2 -dADNEXUS_RPT_PROD -f nz_lookup.tmp
     rm nz_lookup.tmp
-}
-
-function get_vert_tables() {
-    echo $@
-        python2.7 ~/scripts/python_vert_lookup.py $@ > nz_lookup.tmp
-        LANG=en_US.UTF-8 /opt/vertica/bin/vsql -U USER -w -h vertica-internal.prod.adnxs.net -f nz_lookup.tmp
-        rm nz_lookup.tmp
-}
-
-function domain_pub() {
-echo $@
-python2.7 /home/USER/etl-fraud/domain_scripts/python_pub_lookup.py $@
-    }
-
-function domain_sellers() {
-echo $@
-python2.7 /home/USER/etl-fraud/domain_scripts/domain_sellers.py $@
-}
-
-function domain_tags() {
-echo $@
-python2.7 /home/USER/etl-fraud/domain_scripts/domain_tags.py $@
-}
-function pub_domains() {
-  echo $@
-  python2.7 /home/USER/etl-fraud/domain_scripts/pub_domains.py $@
-}
-
-function tag_domainsclick() {
-  echo $@
-  python2.7 /home/USER/etl-fraud/domain_scripts/tag_domains.py $@
 }
 
 
@@ -157,23 +125,6 @@ function auth() {
         CURR_COOKIE=$API_SAND_COOKIE
         CURR_URL=$API_SAND_URL
         CURR_CONN="${API}-${SAND}"
-    elif [ "$1" == "$DW_SAND" ]; then
-        CMD="curl -b $DW_SAND_COOKIE -c $DW_SAND_COOKIE -X POST --data-binary @${AUTHDIR}sand_authfile "${DW_SAND_URL}auth""
-        echo "Using ${CMD}"
-	eval "${CMD}"
-	CURR_COOKIE=$DW_SAND_COOKIE
-        CURR_URL=$DW_SAND_URL
-        CURR_CONN="${DW}-${SAND}"
-    elif [ "$1" ==  "$API_PROD" ]; then
-        curl -b $API_PROD_COOKIE -c $API_PROD_COOKIE -X POST --data-binary @${AUTHDIR}prod_authfile "${API_PROD_URL}auth"
-        CURR_COOKIE=$API_PROD_COOKIE
-        CURR_URL=$API_PROD_URL
-        CURR_CONN="${API}-${PROD}"
-    elif [ "$1" == "$DW_PROD" ]; then
-        curl -b $DW_PROD_COOKIE -c $DW_PROD_COOKIE -X POST --data-binary @${AUTHDIR}prod_authfile "${DW_PROD_URL}auth"
-        CURR_COOKIE=$DW_PROD_COOKIE
-        CURR_URL=$DW_PROD_URL
-        CURR_CONN="${DW}-${PROD}"
     else
         echo "The proper usage is auth [api-prod/dw-prod/api-sand/dw-sand]"
     fi
